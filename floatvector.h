@@ -1,118 +1,118 @@
-#ifndef  INTVECTOR_H  //防止头文件被重复调用
-#define INTVECTOR_H
+#ifndef  FLOATVECTOR_H  //防止头文件被重复调用
+#define FLOATVECTOR_H
 #include<stdlib.h>
 #include <string.h>
 
 typedef struct{
-    int* pData; //data pointer
+    float* pData; //data pointer
     int size; //current valid data size
     int capacity; //current data pointer size
-} INTVECTOR;
+} FLOATVECTOR;
 
 /**
-* @brief Int Vector initialization
+* @brief Float Vector initialization
 * @param 
-* @return INTVECTOR*
+* @return FLOATVECTOR*
 */
-INTVECTOR* IntVector_Init();
+FLOATVECTOR* FloatVector_Init();
 
 /**
-* @brief Int Vector initialization with exist
-* @param int* pData, int p_size
-* @return INTVECTOR*
+* @brief Float Vector initialization with exist
+* @param float* pData, int p_size
+* @return FLOATVECTOR*
 */
-INTVECTOR* IntVector_InitByPtr(int* pData, int p_size);
+FLOATVECTOR* FloatVector_InitByPtr(float* pData, int p_size);
 
 /**************************************************/
 /*               Add and Remove value             */
 /**************************************************/
 /**
-* @brief push back int value
-* @param INTVECTOR*, int value
+* @brief push back float value
+* @param FLOATVECTOR*, float value
 * @return 
 */
-void IntVector_PushBack(INTVECTOR* vec, int val);
+void FloatVector_PushBack(FLOATVECTOR* vec, float val);
 
 /**
-* @brief insert int value to int position
-* @param INTVECTOR*, int value, int position
+* @brief insert float value to int position
+* @param FLOATVECTOR*, float value, int position
 * @return 
 */
-void IntVector_Insert(INTVECTOR* vec, int val, int pos);
+void FloatVector_Insert(FLOATVECTOR* vec, float val, int pos);
 
 /**
 * @brief delete value by position
-* @param INTVECTOR*, int position
+* @param FLOATVECTOR*, int position
 * @return 
 */
-void IntVector_RemoveByPos(INTVECTOR* vec, int pos);
+void FloatVector_RemoveByPos(FLOATVECTOR* vec, int pos);
 
 /**
 * @brief delete all vector data by value
-* @param INTVECTOR*, int value
+* @param FLOATVECTOR*, float value
 * @return 
 */
-void IntVector_RemoveByVal(INTVECTOR* vec, int val);
+void FloatVector_RemoveByVal(FLOATVECTOR* vec, float val);
 
 /**************************************************/
 /*            Find and Update Value               */
 /**************************************************/
 /**
-* @brief get first position of int value
-* @param INTVECTOR*, int value
+* @brief get first position of float value
+* @param FLOATVECTOR*, float value
 * @return if found return int posiiton, else -1
 */
-int IntVector_FindValue(INTVECTOR* vec, int val);
+int FloatVector_FindValue(FLOATVECTOR* vec, float val);
 
 /**
 * @brief update data by position and velue
-* @param INTVECTOR*, int position, int value
+* @param FLOATVECTOR*, int position, float value
 * @return if found return int posiiton, else -1
 */
-void IntVector_UpdateValue(INTVECTOR* vec, int pos, int val);
+void FloatVector_UpdateValue(FLOATVECTOR* vec, int pos, float val);
 
 /**************************************************/
 /*            Get IntVecotor params               */
 /**************************************************/
 /**
 * @brief get vector size
-* @param INTVECTOR*
+* @param FLOATVECTOR*
 * @return vector size
 */
-int IntVector_GetSize(INTVECTOR* vec);
+int FloatVector_GetSize(FLOATVECTOR* vec);
 
 /**
 * @brief get vector capacity
-* @param INTVECTOR*
+* @param FLOATVECTOR*
 * @return vector capacity
 */
-int IntVector_GetCapacity(INTVECTOR* vec);
+int FloatVector_GetCapacity(FLOATVECTOR* vec);
 
 /**************************************************/
 /*             Clear and Free Space               */
 /**************************************************/
 /**
 * @brief Int Vector clear, reset vector size, keep capacity
-* @param INTVECTOR* to be clear
+* @param FLOATVECTOR* to be clear
 * @return 
 */
-void IntVector_Clear(INTVECTOR* vec);
+void FloatVector_Clear(FLOATVECTOR* vec);
 
 /**
 * @brief Int Vector destruction, free struct&pData memory space
-* @param INTVECTOR* to be freed
+* @param FLOATVECTOR* to be freed
 * @return 
 */
-void IntVector_Free(INTVECTOR* vec);
+void FloatVector_Free(FLOATVECTOR* vec);
 
 /**************************************************/
 /*                     Utils                      */
 /**************************************************/
 /**
 * @brief if size=capacity, expand data ptr 
-* @param INTVECTOR* to check
+* @param FLOATVECTOR* to check
 * @return
 */
-void _IntVector_ExpandCheck(INTVECTOR* vec);
+void _FloatVector_ExpandCheck(FLOATVECTOR* vec);
 
-#endif // ! INTVECTOR_H
+#endif // ! FLOATVECTOR_H

@@ -40,9 +40,7 @@ void IntVector_Insert(INTVECTOR* vec, int val, int pos){
 
 void IntVector_RemoveByPos(INTVECTOR* vec, int pos){
     assert(vec != NULL);
-	if (pos < 0 || pos >= vec->size) {
-		return;
-	}
+	assert(pos >= 0 || pos <= vec->size);
 	for (int i = pos; i < vec->size-1; i++) {
 		vec->pData[i] = vec->pData[i + 1];
 	}
@@ -100,7 +98,7 @@ void IntVector_Free(INTVECTOR* vec){
 void _IntVector_ExpandCheck(INTVECTOR* vec){
 	if (vec->size == vec->capacity) {
 		int* newSpace = (int*)malloc(sizeof(int) * vec->capacity * 2);
-		memcpy(newSpace, vec->pData, vec->capacity * sizeof(int)); 
+		memcpy(newSpace, vec->pData, vec->size * sizeof(int)); 
 		free(vec->pData);
 		vec->capacity *= 2;
 		vec->pData = newSpace;

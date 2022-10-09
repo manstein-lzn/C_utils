@@ -1,26 +1,57 @@
 #include <stdio.h>
 #include "intvector.h"
+#include "floatvector.h"
 int main(){
-    // INTVECTOR* intv = IntVector_Init();
-    // for(int i = 0; i < 10; i++){
-    //     IntVector_PushBack(intv, i);
-    // }
-    // IntVector_Insert(intv, 999, 0);
-    // IntVector_Insert(intv, 888, intv->size);
-    // IntVector_Insert(intv, 555, 5);
-    // for(int i = 0; i < intv->size; i++){
-    //     printf("index: %d, value: %d\r\n", i, intv->pData[i]);
-    // }
-    int a = 0;
-    int b = 1;
-    int c = -1;
-    int d = 100;
-    if(a) printf("%d is true.\n", a);
-    else printf("%d is not true.\n", a);
-    if(b) printf("%d is true.\n", b);
-    else printf("%d is not true.\n", b);
-    if(c) printf("%d is true.\n", c);
-    else printf("%d is not true.\n", c);
-    if(d) printf("%d is true.\n", d);  
-    else printf("%d is not true.\n", d); 
+    /**************************************************/
+    /*                 Vector test                    */
+    /**************************************************/
+    FLOATVECTOR* floatv = FloatVector_Init();
+    //test pushback
+    for(int i = 0; i < 10; i++){
+        FloatVector_PushBack(floatv, i + 0.1);
+    }
+    printf("Vector after pushback: \n");
+    for(int i = 0; i < floatv->size; i++){
+        printf("index: %d, value: %f\n", i, floatv->pData[i]);
+    }
+    //test insert
+    printf("Vector after insert: \n");
+    FloatVector_Insert(floatv, (float)9.99, 0);
+    FloatVector_Insert(floatv, (float)8.88, floatv->size);
+    FloatVector_Insert(floatv, (float)9.99, 5);
+    FloatVector_Insert(floatv, (float)6666.0, floatv->size);
+    for(int i = 0; i < floatv->size; i++){
+        printf("index: %d, value: %f\n", i, floatv->pData[i]);
+    }
+    //test remove bypos
+    printf("Vector after remove bypos: \n");
+    FloatVector_RemoveByPos(floatv, 13);
+    FloatVector_RemoveByPos(floatv, 3);
+    for(int i = 0; i < floatv->size; i++){
+        printf("index: %d, value: %f\n", i, floatv->pData[i]);
+    }
+    //test remove byval
+    printf("Vector after remove byval: \n");
+    FloatVector_RemoveByVal(floatv, (float)9.99);
+    FloatVector_RemoveByVal(floatv, (float)8.88);
+    for(int i = 0; i < floatv->size; i++){
+        printf("index: %d, value: %f\n", i, floatv->pData[i]);
+    }
+    //find value
+    printf("find value: \n");
+    int pos = FloatVector_FindValue(floatv, (float)0.10);
+    printf("0.10 pos: %d \n", pos);
+    pos = FloatVector_FindValue(floatv, (float)4.10);
+    printf("4.10 pos: %d \n", pos);
+    //update value
+    printf("update value at 8 as 100.0: \n");
+    FloatVector_UpdateValue(floatv, 8, (float)100.0);
+    for(int i = 0; i < floatv->size; i++){
+        printf("index: %d, value: %f\n", i, floatv->pData[i]);
+    }
+    //size and capacity check
+    printf("FVector size: %d \n", FloatVector_GetSize(floatv));
+    printf("FVector capacity: %d \n", FloatVector_GetCapacity(floatv));
+    //vector free check
+    FloatVector_Free(floatv);
 }
