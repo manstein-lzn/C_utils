@@ -1,9 +1,10 @@
 #include <stdio.h>
-#include "intvector.h"
-#include "floatvector.h"
+#include "vector_int.h"
+#include "vector_float.h"
+#include "vector_string.h"
 int main(){
     /**************************************************/
-    /*                 Vector test                    */
+    /*                FloatVector test                */
     /**************************************************/
     FLOATVECTOR* floatv = FloatVector_Init();
     //test pushback
@@ -54,4 +55,42 @@ int main(){
     printf("FVector capacity: %d \n", FloatVector_GetCapacity(floatv));
     //vector free check
     FloatVector_Free(floatv);
+
+    /**************************************************/
+    /*               StringVector test                */
+    /**************************************************/
+    STRINGVECTOR* sv = StringVector_Init();
+    StringVector_PushBack(sv, "value0");
+    StringVector_PushBack(sv, "value1");
+    StringVector_PushBack(sv, "value2");
+    StringVector_PushBack(sv, "value4");
+    StringVector_PushBack(sv, "value5");
+    StringVector_PushBack(sv, "value6");
+    StringVector_PushBack(sv, "value7");
+    StringVector_PushBack(sv, "value8");
+    StringVector_PushBack(sv, "value9");
+
+    StringVector_Insert(sv, "value3", 3);
+
+    StringVector_RemoveByPos(sv, 8);
+
+    StringVector_RemoveByVal(sv, "value9");
+
+    StringVector_UpdateValue(sv, 7, "value_update7");
+
+    StringVector_PushBack(sv, "value_todel");
+
+    StringVector_PushBack(sv, "value_todel");
+
+    StringVector_PushBack(sv, "value_nottodel");
+
+    StringVector_RemoveByVal(sv, "value_todel");
+
+    for(int i = 0; i < sv->size; ++i){
+        printf("%s\n", sv->pData[i]);
+    }
+    printf("StringVector size: %d\n", sv->size);
+    printf("StringVector capacity: %d\n", sv->capacity);
+
+    StringVector_Free(sv);
 }
