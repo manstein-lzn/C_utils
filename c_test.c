@@ -2,7 +2,7 @@
 #include "vector_int.h"
 #include "vector_float.h"
 #include "vector_string.h"
-#include "ptr_vector.h"
+#include "vector_ptr.h"
 int main(){
     /**************************************************/
     /*         FloatVector test (passed)              */
