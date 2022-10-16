@@ -1,4 +1,4 @@
-#ifndef  INTVECTOR_H  //防止头文件被重复调用
+#ifndef  INTVECTOR_H
 #define INTVECTOR_H
 #include<stdlib.h>
 #include <string.h>

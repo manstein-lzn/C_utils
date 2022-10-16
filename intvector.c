@@ -40,7 +40,7 @@ void IntVector_Insert(INTVECTOR* vec, int val, int pos){
 
 void IntVector_RemoveByPos(INTVECTOR* vec, int pos){
     assert(vec != NULL);
-	assert(pos >= 0 || pos <= vec->size);
+	assert(pos >= 0 && pos <= vec->size);
 	for (int i = pos; i < vec->size-1; i++) {
 		vec->pData[i] = vec->pData[i + 1];
 	}
