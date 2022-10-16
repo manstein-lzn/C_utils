@@ -17,9 +17,10 @@ Guide Warning:
 #define PTR void*
 
 typedef struct{
-    PTR* pData;       //ptr data ptr
-    int  size;        //current valid data size
-    int  capacity;    //current data pointer size
+    PTR*        pData;       //ptr data ptr
+    int         size;        //current valid data size
+    int         capacity;    //current data pointer size
+    const char* dType;       //ptr data type
 } PTRVECTOR;
 
 /**************************************************/
@@ -27,10 +28,10 @@ typedef struct{
 /**************************************************/
 /**
 * @brief Prt Vector initialization
-* @param 
+* @param const char* ptr data type
 * @return PTRVECTOR*
 */
-PTRVECTOR* PtrVector_Init();
+PTRVECTOR* PtrVector_Init(const char* ptr_type);
 
 /**************************************************/
 /*               Add and Remove value             */
@@ -74,7 +75,7 @@ int PtrVector_FindValue(PTRVECTOR* vec, PTR val);
 void PtrVector_UpdateValue(PTRVECTOR* vec, int pos, PTR val);
 
 /**************************************************/
-/*            Get IntVecotor params               */
+/*            Get PtrVecotor params               */
 /**************************************************/
 /**
 * @brief get vector size
@@ -89,6 +90,13 @@ int PtrVector_GetSize(PTRVECTOR* vec);
 * @return vector capacity
 */
 int PtrVector_GetCapacity(PTRVECTOR* vec);
+
+/**
+* @brief get type
+* @param PTRVECTOR*
+* @return const char* ptr data type
+*/
+const char* PtrVector_GetType(PTRVECTOR* vec);
 
 /**************************************************/
 /*             Clear and Free Space               */

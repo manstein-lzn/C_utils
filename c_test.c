@@ -99,7 +99,7 @@ int main(){
     /*                 Vector test                    */
     /**************************************************/
     //create vector<floatvector>
-    PTRVECTOR* ptrv = PtrVector_Init();
+    PTRVECTOR* ptrv = PtrVector_Init("float");
     for(int i = 0; i < 10; ++i){
         FLOATVECTOR* floatv = FloatVector_Init();
         for(int j = 0; j < 10; ++j){
@@ -113,5 +113,6 @@ int main(){
         printf("ptrvector[%d]->pdata[%d] = %f \r\n", i, i, floatv->pData[i]);
         FloatVector_Free(floatv);
     }
+    printf("Ptr vector data type: %s\r\n", ptrv->dType);
     PtrVector_Free(ptrv);
 }

@@ -12,12 +12,13 @@ void _PtrVector_ExpandCheck(PTRVECTOR* vec){
 }
 
 //implementation
-PTRVECTOR* PtrVector_Init(){
+PTRVECTOR* PtrVector_Init(const char* ptr_type){
 	PTRVECTOR* newvector = (PTRVECTOR*)malloc(sizeof(PTRVECTOR));
 
 	newvector->size = 0;
 	newvector->capacity = PTRVEC_initCAPACITY;
 	newvector->pData =(PTR*) malloc(sizeof(PTR) * PTRVEC_initCAPACITY);
+	newvector->dType = ptr_type;
 	return newvector;
 }
 
@@ -84,6 +85,11 @@ int PtrVector_GetCapacity(PTRVECTOR* vec){
 	return vec->capacity;
 }
 
+const char* PtrVector_GetType(PTRVECTOR* vec){
+	if(vec == NULL) param_exception("PTRVECTOR* is NULL", "PtrVector_GetSize");
+	return vec->dType;
+}
+
 void PtrVector_Clear(PTRVECTOR* vec){
     if(vec == NULL) param_exception("PTRVECTOR* is NULL", "PtrVector_Clear");
 	vec->size = 0;
@@ -93,5 +99,6 @@ void PtrVector_Free(PTRVECTOR* vec){
     if(vec == NULL) param_exception("PTRVECTOR* is NULL", "PtrVector_Free");
 	if(vec->pData == NULL) normal_exception("vec->pData is NULL", "PtrVector_Free");
 	free(vec->pData);
+	free((char*)vec->dType);
 	free(vec);
 }
