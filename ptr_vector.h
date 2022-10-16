@@ -3,7 +3,6 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include "stdint.h"
 #include "exception.h"
 
 //default PTRVECTOR init capacity, PTRVECTOR allocates memory space in terms of PTRVEC_initCAPACITY*2^n at n th expanding
@@ -11,11 +10,11 @@
 
 /*
 Guide Warning:
-1. since different data structure ptr takes up same number of bytes, PTRVECTOR use int8_t** to save ptrs, 
+1. since different data structure ptr takes up same number of bytes, PTRVECTOR use void** to save ptrs, 
    user should    CAST BACK    returned ptr manualy when visit ptr data in PTRVECTOR
 2. PtrVector_Free() doesn't(can't) free PTRs in pData
 */
-#define PTR int8_t*
+#define PTR void*
 
 typedef struct{
     PTR* pData;       //ptr data ptr
