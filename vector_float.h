@@ -17,7 +17,7 @@ typedef struct{
 FLOATVECTOR* FloatVector_Init();
 
 /**
-* @brief Float Vector initialization with exist
+* @brief Float Vector initialization with existing data pointer
 * @param float* pData, int p_size
 * @return FLOATVECTOR*
 */
@@ -72,7 +72,7 @@ int FloatVector_FindValue(FLOATVECTOR* vec, float val);
 void FloatVector_UpdateValue(FLOATVECTOR* vec, int pos, float val);
 
 /**************************************************/
-/*            Get IntVecotor params               */
+/*            Get FloatVecotor params               */
 /**************************************************/
 /**
 * @brief get vector size
@@ -92,14 +92,14 @@ int FloatVector_GetCapacity(FLOATVECTOR* vec);
 /*             Clear and Free Space               */
 /**************************************************/
 /**
-* @brief Int Vector clear, reset vector size, keep capacity
+* @brief Float Vector clear, reset vector size, keep capacity
 * @param FLOATVECTOR* to be clear
 * @return 
 */
 void FloatVector_Clear(FLOATVECTOR* vec);
 
 /**
-* @brief Int Vector destruction, free struct&pData memory space
+* @brief Float Vector destruction, free struct&pData memory space
 * @param FLOATVECTOR* to be freed
 * @return 
 */

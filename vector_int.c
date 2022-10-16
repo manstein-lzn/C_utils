@@ -1,4 +1,4 @@
-#include "intvector.h"
+#include "vector_int.h"
 #include <stdbool.h>
 #include <assert.h>
 #define CAPACITY_SIZE 20
