@@ -11,8 +11,9 @@
 
 /*
 Guide Warning:
-since different data structure ptr takes up same number of bytes, PTRVECTOR use int8_t** to save ptrs, 
-user should    CAST BACK    returned ptr manualy when visit ptr data in PTRVECTOR
+1. since different data structure ptr takes up same number of bytes, PTRVECTOR use int8_t** to save ptrs, 
+   user should    CAST BACK    returned ptr manualy when visit ptr data in PTRVECTOR
+2. PtrVector_Free() doesn't(can't) free PTRs in pData
 */
 #define PTR int8_t*
 

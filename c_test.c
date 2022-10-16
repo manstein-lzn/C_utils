@@ -111,5 +111,7 @@ int main(){
     for(int i = 0; i < 10; ++i){
         FLOATVECTOR* floatv = (FLOATVECTOR*)ptrv->pData[i];
         printf("ptrvector[%d]->pdata[%d] = %f \r\n", i, i, floatv->pData[i]);
+        FloatVector_Free(floatv);
     }
+    PtrVector_Free(ptrv);
 }
